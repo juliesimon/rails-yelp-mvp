@@ -1,0 +1,24 @@
+<h1><%= @restaurant.name %></h1>
+
+<ul>
+  <li>Address: <%= @restaurant.address %></li>
+  <li>Phone number: <%= @restaurant.phone_number %></li>
+  <li> Category: <%= @restaurant.category.capitalize %></li>
+</ul>
+
+<h3>Reviews of <%= @restaurant.name %></h3>
+<div class="review">
+  <% @restaurant.reviews.each do |review| %>
+    <p><%= review.created_at %></p>
+    <p><%= review.content %></p>
+    <p><%= review.rating %></p>
+  <% end %>
+</div>
+
+
+
+  <%= render 'reviews/form' %>
+
+<div>
+  <%= link_to "Back", restaurants_path, class: "btn btn-primary" %>
+</div>

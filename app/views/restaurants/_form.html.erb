@@ -1,0 +1,16 @@
+<%=  simple_form_for(@restaurant) do |f| %>
+  <% if @restaurant.errors.any? %>
+    <div class="errors-container">
+      <ul>
+        <% @restaurant.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <%= f.input :name, label: 'Name', placeholder: 'Dishoom' %>
+  <%= f.input :address, label: 'Address', placeholder: '7 Boundary St, London E2 7JE' %>
+  <%= f.input :category, collection: Restaurant::CATEGORIES, prompt: "Select a category" %>
+  <%= f.input :phone_number, label: 'Phone Number', placeholder: '+4156789676' %>
+  <%= f.submit "add a restaurant", class: "btn btn-primary" %>
+<% end %>

@@ -1,0 +1,14 @@
+<%= simple_form_for [@restaurant, @review] do |f| %>
+  <% if @review.errors.any? %>
+    <div class="errors-container">
+      <ul>
+        <% @review.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <%= f.input :content, label: 'content', placeholder: 'Write a review with all relevant details!' %>
+  <%= f.input :rating, collection: Review::RATING, prompt: "Select a category" %>
+  <%= f.submit "add a review", class: "btn btn-primary" %>
+<% end %>
